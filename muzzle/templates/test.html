@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Тестовая страница{% endblock %}
+
+{% block content %}
+    <h1>Жми</h1>
+    <form action="" class="upload" enctype="multipart/form-data" method="post">
+        <label for="image" id="image_name" class="button">Выберите образ</label>
+            <input type="file" id="image" name="image">
+        <input type="submit" onclick="modalWin('progress')">
+    </form>
+
+<!--    <button onclick="modal('progress')">ага</button>-->
+<!--    <progress></progress>-->
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}
+Раздача
+{% endblock %}
+
+{% block content %}
+    <h3>Раздача</h3>
+    <form action="" method="post">
+        <div class="table distribute">
+            {% for row in map %}
+                <div class="row distribute">
+                    {% for cell in row %}
+                        <div class="cell distribute">
+                            {% if cell != 0%}
+                                <img width="20%" align="center" src="{{ url_for('static', filename='img/pc.png')}}">
+                                <select class="cell_sel" name="{{ cell }}">
+                                    {% for image in images %}
+                                        {% if macs_with_images[cell] == image %}
+                                            <option value="{{ image }}" selected>{{ image }}</option>
+                                        {% else %}
+                                            <option value="{{ image }}">{{ image }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        <br>
+        <div align="center">
+            <input id="default_to_all" name="default_to_all" type="checkbox">
+            <label for="default_to_all">Образ для всех</label>
+            <select name="image_for_all">
+                {% for image in images %}
+                    {% if loop.index0 == 0 %}
+                        <option value="{{ image }}" selected>{{ image }}</option>
+                    {% else %}
+                        <option value="{{ image }}">{{ image }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <input type="submit" value="Раздать">
+    </form>
+{% endblock %}

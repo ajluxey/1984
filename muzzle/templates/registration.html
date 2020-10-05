@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+Вход
+{% endblock %}
+
+{% block content %}
+    <h2>Регистрация</h2>
+    <form action="" class="login" method="post">
+        <p class="login">Имя пользователя</p>
+        <input type="text" class="login" placeholder="Введите имя">
+        <p class="login">Пароль</p>
+        <input type="password" class="login" placeholder="Введите пароль">
+        <p class="login">Повторите пароль</p>
+        <input type="password" class="login" placeholder="Введите пароль еще раз">
+        <div align="center">
+        <p class="login">Выберите роль</p>
+            <select name="role" class="login">
+                <option value="кто-то">Кто-то</option>
+                <option value="кое-кто">Кое-кто</option>
+            </select>
+        </div>
+
+
+        <input type="submit" value="Зарегистрировать">
+    </form>
+{% endblock %}

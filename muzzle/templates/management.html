@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}
+Загрузка
+{% endblock %}
+
+{% block content%}
+    <h3>Образы</h3>
+    <form action="" class="upload" enctype="multipart/form-data" method="post">
+        <p id="trigger" class="upload">Загрузить новый образ</p>
+        <div id="close_up_form" class="close">
+            <label for="image" id="image_name" class="button">Выберите образ</label>
+            <input type="file" id="image" name="image">
+
+            <label for="config" id="config_name" class="button">Выберите кофигурацию</label>
+            <input type="file" id="config" name="config">
+
+            <p class="upload or">или</p>
+            <div class="default_config" >
+                <input id="default_config" name="default_config" type="checkbox" checked>
+                <label for="default_config">Стандартная конфигурация</label>
+            </div>
+
+            <label for="desc" class="desc">Описание</label>
+            <input type="text" id="desc" name="description">
+
+            <input type="submit" value="Загрузить" onclick="modal('progress')">
+        </div>
+    </form>
+    <form action="" class="delete" method="post">
+        <div id="upload_list" class="table">
+            {% for image in images %}
+                <div class="row" onmouseover="showDelete(this)">
+                    <div class="cell name"><p>{{ image['name'] }}</p></div>
+                    <div class="cell"><p>{{ image['desc'] }}</p></div>
+                    <div class="cell delete" align="right">
+                        <button id="delete_but" name="delete_but" class="delete" type="submit" value="{{ image['name'] }}">Удалить</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+    <script src="{{url_for('static', filename='js/upload.js')}}"></script>
+{% endblock %}

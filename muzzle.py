@@ -1,0 +1,1 @@
+from muzzle import app
